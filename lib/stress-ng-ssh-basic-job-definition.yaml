@@ -1,0 +1,31 @@
+device_type: ssh
+job_name: basic test 02
+timeouts:
+  job:
+    hours: 1
+  action:
+    minutes: 5
+  connection:
+    minutes: 2
+priority: medium
+visibility: public
+
+actions:
+- deploy:
+    to: ssh
+    os: debian
+- boot:
+    method: ssh
+    connection: ssh
+    failure_retry: 2
+    prompts:
+      - 'root@debiandockern1:~#'
+- test:
+    timeout:
+      hours: 1
+    definitions:
+    - repository: https://github.com/rkroshan/lava-test-cases.git
+      from: git
+      path: stress-ng-v1.yaml
+      branch: stress-ng-test-dev
+      name: basic-test

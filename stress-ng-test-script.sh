@@ -6,7 +6,7 @@
 #Description:- encrypt a 16 character random password using crypt
 #More Info:- https://www.github.com/ColinIanKing/stress-ng/blob/master/stress-crypt.c
 
-crypt-test(){
+crypt_test(){
 	echo "Running Crypt Test"
 	stress-ng --crypt 0 -t 30 --perf --tz --metric-brief 
 	lava-test-result "crypt-test"
@@ -16,7 +16,7 @@ crypt-test(){
 #Description:- Put Randomly selected CPUs offline and online. (require root access)
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-cpu-online.c
 
-cpu-online-test(){
+cpu_online_test(){
 	echo "Running cpu-online Test"
 	stress-ng --cpu-online 0 -t 30 --perf --tz --metric-brief  
 	lava-test-result "cpu-online-test"
@@ -26,7 +26,7 @@ cpu-online-test(){
 #Description:- start binarysearch of asorted array of 32 bit integers using bsearch.
 #More Info:-  https://github.com/ColinIanKing/stress-ng/blob/master/stress-bsearch.c
 
-bsearch-test(){
+bsearch_test(){
 	echo "Running bsearch Test"
 	stress-ng --bsearch 0 -t 30 --perf --tz --metric-brief  
 	lava-test-result "bsearch-test"
@@ -36,7 +36,7 @@ bsearch-test(){
 #Description:- perform various matrix operations on floating point values.
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-matrix.c
 
-matrix-test(){
+matrix_test(){
 	echo "Running Matrix Test"
 	stress-ng --matrix 0 -t 30 --perf --tz --metric-brief
 	lava-test-result "matrix-test"  
@@ -46,7 +46,7 @@ matrix-test(){
 #Description:- linear search of unsorted array of 32 bit integers using lsearch
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-lsearch.c
 
-lsearch-test(){
+lsearch_test(){
 	echo "Running lsearch Test"
 	stress-ng --lsearch 0 -t 30 --perf --tz --metric-brief
 	lava-test-result "lsearch-test"
@@ -56,7 +56,7 @@ lsearch-test(){
 #Description:- continually writing, reading and removing temporary files.
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-hdd.c
 
-hdd-test(){
+hdd_test(){
 	echo "Running hdd Test"
 	stress-ng --hdd 0 -t 30 --perf --tz --metric-brief
 	lava-test-result "hdd-test"
@@ -66,7 +66,7 @@ hdd-test(){
 #Description:- randomly seeksand performs 512 byte read/write I/O operations on a file
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-seek.c
 
-seek-test(){
+seek_test(){
 	echo "Running seek Test"
 	stress-ng --seek 0 -t 30 --perf --tz --metric-brief
 	lava-test-result "seek-test"
@@ -76,7 +76,7 @@ seek-test(){
 #Description:- perform large pipe writes and reads to exercise pipe I/O.
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-pipe.c
 
-pipe-test(){
+pipe_test(){
 	echo "Running pipe Test"
 	stress-ng --pipe 0 -t 30 --perf --tz --metric-brief
 	lava-test-result "pipe-test"
@@ -86,7 +86,7 @@ pipe-test(){
 #Description:- perform various socket stress activity
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-sock.c
 
-sock-test(){
+sock_test(){
 	echo "Running sock Test"
 	stress-ng --sock 0 -t 30 --perf --tz --metric-brief
 	lava-test-result "sock-test"
@@ -96,20 +96,20 @@ sock-test(){
 #Description:- start sender and receiver processes that continually sendand receive messages using POSIX message queues.
 #More Info:- https://github.com/ColinIanKing/stress-ng/blob/master/stress-mq.c
 
-mq-test(){
+mq_test(){
 	echo "Running mq Test"
 	stress-ng --mq 0 -t 30 --perf --tz --metric-brief
 	lava-test-result "mq-test"
 }
 
 
-(crypt-test)
-(cpu-online-test)
-(bsearch-test)
-(matrix-test)
-(lsearch-test)
-(hdd-test)
-(seek-test)
-(pipe-test)
-(sock-test)
-(mq-test)
+(crypt_test)
+(cpu_online_test)
+(bsearch_test)
+(matrix_test)
+(lsearch_test)
+(hdd_test)
+(seek_test)
+(pipe_test)
+(sock_test)
+(mq_test)

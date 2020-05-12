@@ -1,0 +1,11 @@
+metadata:
+  format: Lava-Test Test Definition 1.0
+  name: Stress-ng lava-test-script
+  Description: Lava-test-script for stress-ng testsuite
+  maintainer: rkroshan.1997@gmail.com
+
+run:
+  steps:
+    - lava-test-case stress-ng-installation --shell ./stress-ng-installation-script.sh
+    - lava-test-case stress-ng-version --shell stress-ng --version
+    - lava-test-case stress-ng-test-script-run --shell ./stress-ng-test-script.sh

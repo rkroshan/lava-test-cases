@@ -13,3 +13,4 @@ run:
     - lava-test-case debian-test-lscpu --shell lscpu
     - lava-test-case debian-test-user --shell whoami
     - lava-test-case debian-test-user-id --shell id
+    - lava-test-case debian-test-list-directory --shell ls -lart

@@ -8,7 +8,7 @@
 
 crypt_test(){
 	echo "Running Crypt Test"
-	stress-ng --crypt 0 -t 30 --perf --tz --metric-brief 
+	stress-ng --crypt 0 -t 30 --perf --tz --metrics-brief 
 	lava-test-result "crypt-test"
 }
 
@@ -18,7 +18,7 @@ crypt_test(){
 
 cpu_online_test(){
 	echo "Running cpu-online Test"
-	stress-ng --cpu-online 0 -t 30 --perf --tz --metric-brief  
+	stress-ng --cpu-online 0 -t 30 --perf --tz --metrics-brief  
 	lava-test-result "cpu-online-test"
 }
 
@@ -28,7 +28,7 @@ cpu_online_test(){
 
 bsearch_test(){
 	echo "Running bsearch Test"
-	stress-ng --bsearch 0 -t 30 --perf --tz --metric-brief  
+	stress-ng --bsearch 0 -t 30 --perf --tz --metrics-brief  
 	lava-test-result "bsearch-test"
 }
 
@@ -38,7 +38,7 @@ bsearch_test(){
 
 matrix_test(){
 	echo "Running Matrix Test"
-	stress-ng --matrix 0 -t 30 --perf --tz --metric-brief
+	stress-ng --matrix 0 -t 30 --perf --tz --metrics-brief
 	lava-test-result "matrix-test"  
 }
 
@@ -48,7 +48,7 @@ matrix_test(){
 
 lsearch_test(){
 	echo "Running lsearch Test"
-	stress-ng --lsearch 0 -t 30 --perf --tz --metric-brief
+	stress-ng --lsearch 0 -t 30 --perf --tz --metrics-brief
 	lava-test-result "lsearch-test"
 }
 
@@ -58,7 +58,7 @@ lsearch_test(){
 
 hdd_test(){
 	echo "Running hdd Test"
-	stress-ng --hdd 0 -t 30 --perf --tz --metric-brief
+	stress-ng --hdd 0 -t 30 --perf --tz --metrics-brief
 	lava-test-result "hdd-test"
 }
 
@@ -68,7 +68,7 @@ hdd_test(){
 
 seek_test(){
 	echo "Running seek Test"
-	stress-ng --seek 0 -t 30 --perf --tz --metric-brief
+	stress-ng --seek 0 -t 30 --perf --tz --metrics-brief
 	lava-test-result "seek-test"
 }
 
@@ -78,7 +78,7 @@ seek_test(){
 
 pipe_test(){
 	echo "Running pipe Test"
-	stress-ng --pipe 0 -t 30 --perf --tz --metric-brief
+	stress-ng --pipe 0 -t 30 --perf --tz --metrics-brief
 	lava-test-result "pipe-test"
 }
 
@@ -88,7 +88,7 @@ pipe_test(){
 
 sock_test(){
 	echo "Running sock Test"
-	stress-ng --sock 0 -t 30 --perf --tz --metric-brief
+	stress-ng --sock 0 -t 30 --perf --tz --metrics-brief
 	lava-test-result "sock-test"
 }
 
@@ -98,7 +98,7 @@ sock_test(){
 
 mq_test(){
 	echo "Running mq Test"
-	stress-ng --mq 0 -t 30 --perf --tz --metric-brief
+	stress-ng --mq 0 -t 30 --perf --tz --metrics-brief
 	lava-test-result "mq-test"
 }
 

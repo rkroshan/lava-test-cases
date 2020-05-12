@@ -9,7 +9,7 @@ run:
     - lava-test-case debian-test-pwd --shell pwd
     - lava-test-case debian-test-uname --shell uname -a
     - lava-test-case debian-test-ipaddress --shell ip a
-    - lava-test-case debian-test-ping-google --shell ping www.google.com
+    - lava-test-case debian-test-ping-google --shell ping -c 3 www.google.com
     - lava-test-case debian-test-lscpu --shell lscpu
     - lava-test-case debian-test-user --shell whoami
     - lava-test-case debian-test-user-id --shell id

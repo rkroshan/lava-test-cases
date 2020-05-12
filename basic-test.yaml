@@ -1,0 +1,15 @@
+metadata:
+  format: Lava-Test Test Definition 1.0
+  name: basic-smoke-test
+  description: "Basic test to run to see connectivity between lava server and target"
+  maintainer: rkroshan.1997@gmail.com
+
+run:
+  steps:
+    - lava-test-case debian-test-pwd --shell pwd
+    - lava-test-case debian-test-uname --shell uname -a
+    - lava-test-case debian-test-ipaddress --shell ip a
+    - lava-test-case debian-test-ping-google --shell ping www.google.com
+    - lava-test-case debian-test-lscpu --shell lscpu
+    - lava-test-case debian-test-user --shell whoami
+    - lava-test-case debian-test-user-id --shell id

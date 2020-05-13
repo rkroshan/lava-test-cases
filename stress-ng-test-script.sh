@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ####basic stress-ng testing
 
@@ -12,8 +12,11 @@ echo "About to run stress-ng-test ..."
 
 crypt_test(){
 	echo "Running Crypt Test"
-	stress-ng --crypt 0 -t 5 --perf --tz --metrics-brief -v 
-	lava_test_result "crypt-test"
+	stress-ng --crypt 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "crypt-test" $VAR
+	unset VAR
+	rm result.txt 
 }
 
 #TestName:- cpu-online
@@ -22,8 +25,11 @@ crypt_test(){
 
 cpu_online_test(){
 	echo "Running cpu-online Test"
-	stress-ng --cpu-online 0 -t 30 --perf --tz --metrics-brief -v 
-	lava_test_result "cpu-online-test"
+	stress-ng --cpu-online 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "cpu-online-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 #TestName:- bsearch
@@ -32,8 +38,11 @@ cpu_online_test(){
 
 bsearch_test(){
 	echo "Running bsearch Test"
-	stress-ng --bsearch 0 -t 30 --perf --tz --metrics-brief -v  
-	lava_test_result "bsearch-test"
+	stress-ng --bsearch 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt ) 
+	lava_test_result_stress_ng "bsearch-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 #TestName:- Matrix
@@ -42,8 +51,11 @@ bsearch_test(){
 
 matrix_test(){
 	echo "Running Matrix Test"
-	stress-ng --matrix 0 -t 30 --perf --tz --metrics-brief -v
-	lava_test_result "matrix-test"  
+	stress-ng --matrix 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "matrix-test" $VAR
+	unset VAR
+	rm result.txt  
 }
 
 #TestName:- lsearch
@@ -52,8 +64,11 @@ matrix_test(){
 
 lsearch_test(){
 	echo "Running lsearch Test"
-	stress-ng --lsearch 0 -t 30 --perf --tz --metrics-brief -v
-	lava_test_result "lsearch-test"
+	stress-ng --lsearch 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "lsearch-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 #TestName:- hdd
@@ -62,8 +77,11 @@ lsearch_test(){
 
 hdd_test(){
 	echo "Running hdd Test"
-	stress-ng --hdd 0 -t 30 --perf --tz --metrics-brief -v
-	lava_test_result "hdd-test"
+	stress-ng --hdd 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "hdd-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 #TestName:- seek
@@ -72,8 +90,11 @@ hdd_test(){
 
 seek_test(){
 	echo "Running seek Test"
-	stress-ng --seek 0 -t 30 --perf --tz --metrics-brief -v
-	lava_test_result "seek-test"
+	stress-ng --seek 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "seek-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 #TestName:- pipe
@@ -82,8 +103,11 @@ seek_test(){
 
 pipe_test(){
 	echo "Running pipe Test"
-	stress-ng --pipe 0 -t 30 --perf --tz --metrics-brief -v
-	lava_test_result "pipe-test"
+	stress-ng --pipe 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "pipe-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 #TestName:- sock
@@ -92,8 +116,11 @@ pipe_test(){
 
 sock_test(){
 	echo "Running sock Test"
-	stress-ng --sock 0 -t 30 --perf --tz --metrics-brief -v
-	lava_test_result "sock-test"
+	stress-ng --sock 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "sock-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 #TestName:- mq
@@ -102,18 +129,21 @@ sock_test(){
 
 mq_test(){
 	echo "Running mq Test"
-	stress-ng --mq 0 -t 30 --perf --tz --metrics-brief -v
-	lava_test_result "mq-test"
+	stress-ng --mq 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	VAR=$(grep -c "successful" result.txt )
+	lava_test_result_stress_ng "mq-test" $VAR
+	unset VAR
+	rm result.txt
 }
 
 
 (crypt_test)
-(cpu_online_test)
-(bsearch_test)
-(matrix_test)
-(lsearch_test)
-(hdd_test)
-(seek_test)
-(pipe_test)
-(sock_test)
-(mq_test)
+# (cpu_online_test)
+# (bsearch_test)
+# (matrix_test)
+# (lsearch_test)
+# (hdd_test)
+# (seek_test)
+# (pipe_test)
+# (sock_test)
+# (mq_test)

@@ -489,10 +489,8 @@ lava_test_result_stress_ng() {
         else
             if [ "${lava_check}" = "true" ];then
                 lava-test-case ${test_case} --result fail 
-                exit 0
             else
                 echo "${test_case} test failed"
-                exit 0
 
             fi
         fi
@@ -500,11 +498,9 @@ lava_test_result_stress_ng() {
         if [ "${lava_check}" = "true" ];then
                 echo "Usage: lava_test_result test_case output"
                 lava-test-case ${test_case} --result fail 
-                exit 0
             else
                 echo "Usage: lava_test_result test_case output"
                 echo "${test_case} test failed"
-                exit 0
 
             fi
     fi

@@ -10,7 +10,7 @@ params:
   PARAMETERS: --params "--perf --tz --metrics-brief -v"
   TEST_FILES: -F "stress-ng-testcases-name.txt stress-ng-testcases-name1.txt"
   TEST_CASES: -C "matrix lsearch sock pipe"
-  ALL_TESTS: --all 1
+  ALL_TESTS: --all 0
   TIME_TO_RUN: --time 30
   CPU_INSTANCES: --cpu_instance 0
 

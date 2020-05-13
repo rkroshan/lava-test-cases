@@ -1,0 +1,7 @@
+crypt
+cpu-online
+bsearch
+matrix
+lsearch
+pipe 
+mq

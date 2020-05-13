@@ -19,7 +19,7 @@ usage_func() {
 
 run_stress_ng_test(){
 	echo "Running $1 Test"
-	stress-ng --$1 0 -t 5 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
+	stress-ng --$1 0 -t 30 --perf --tz --metrics-brief -v 2>&1 | tee result.txt 
 	VAR=$(grep -c " successful " result.txt )
 	lava_test_result_stress_ng "$1-test" $VAR
 	unset VAR

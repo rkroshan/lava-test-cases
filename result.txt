@@ -1,0 +1,10 @@
+stress-ng: debug: [14286] 4 processors online, 4 processors configured
+stress-ng: info:  [14286] dispatching hogs: 4 matrix
+stress-ng: info:  [14286] cache allocate: default cache size: 3072K
+stress-ng: debug: [14286] starting stressors
+stress-ng: debug: [14288] stress-ng-matrix: started [14288] (instance 0)
+stress-ng: debug: [14288] perf_event_open failed, no perf events [14288]
+stress-ng: debug: [14289] stress-ng-matrix: started [14289] (instance 1)
+stress-ng: debug: [14286] 4 stressors spawned
+stress-ng: debug: [14290] stress-ng-matrix: started [14290] (instance 2)
+stress-ng: debug: [14291] stress-ng-matrix: started [14291] (instance 3)

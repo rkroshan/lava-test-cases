@@ -12,4 +12,5 @@ run:
   steps:
     - lava-test-case stress-ng-installation --shell ./stress-ng-installation-script.sh
     - lava-test-case stress-ng-version --shell stress-ng --version
+    - lava-test-case stress-ng-version-ls --shell ls -lart
     - lava-test-case stress-ng-test-script-run --shell ./stress-ng-test-script.sh -F ${TEST_CASES}

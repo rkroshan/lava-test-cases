@@ -44,7 +44,7 @@ run_stress_ng_test(){
 	echo "Running $1 Test"
 	stress-ng --$1 $cpu_instance -t $time_to_run $params_list 2>&1 | tee result.txt 
 	VAR=$(grep -c " successful " result.txt )
-	lava_test_result_stress_ng "$1-test" $VAR
+	lava_test_result_stress_ng "$1-$2-test" $VAR
 	unset VAR
 	rm result.txt 
 }
@@ -62,7 +62,7 @@ stress_ng_test_cases_file(){
 		filename=$i
 		while read line; do
 			#echo $line
-			run_stress_ng_test $line
+			run_stress_ng_test $line from-file
 		done < $filename
 	done
 }
@@ -171,7 +171,7 @@ main_function(){
 			done
 		fi
 		if [ -n terminal_test ]; then
-			stress_ng_test_cases_terminal $terminal_test
+			stress_ng_test_cases_terminal $terminal_test 
 		fi
 		if [ -n file_names ]; then
 			stress_ng_test_cases_file

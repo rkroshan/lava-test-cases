@@ -7,15 +7,27 @@ metadata:
 
 params:
 
-  PARAMETERS: --params "--perf --tz --metrics-brief -v"
-  TEST_FILES: -F "stress-ng-testcases-name.txt stress-ng-testcases-name1.txt"
-  TEST_CASES: -C "matrix lsearch sock pipe"
-  ALL_TESTS: --all 0
-  TIME_TO_RUN: --time 30
-  CPU_INSTANCES: --cpu_instance 0
+  PARAMETERS: --params "--perf --tz --metrics-brief -v"         # type the parameters you want
+  TEST_FILES: -F "stress-ng-testcases-name.txt stress-ng-testcases-name1.txt"         #type the filename present in the same directory consisting the test cases
+  TEST_CASES: -C "matrix lsearch sock pipe"         #type the tes-case name inside the double colon as shown     
+  ALL_TESTS: --all 0                #to run all test cases set --all 1 and then all test-cases, test-files, classes given will be neglected and all tests will run.         
+  RUN_SEQUENTIALLY: --seq 0         #when --all 1, then to run test cases sequentially set --seq 1, else to run all test-cases in parallel --seq 0 
+  TIME_TO_RUN: --time 30            #type the time in seconds for each test case to run
+  CPU_INSTANCES: --cpu_instance 0   #type the number of instances of each test case to run, if set 0 the all the online-spus on target will run each instance of testcase in parallel
+  CLASS_WISE, : --class 0 "cpu cpu-cache"         #if want to run test cases class-wise, then set --class 1 and  type the class-name inside double colon as shown. If --class 0 then no class-wise test will run.
+  ALL_CLASS: --all_class 0          #set --all_class 1 if want to run all test-cases class-wise 
+
+
+  #priority of test-cases:
+  #all := TEST_FILES, TEST_CASES, ALL_TESTS, CLASS_WISE, ALL_CLASS will not be considered.
+  #--all_class := CLASS_WISE testcases will not be considered
+  #--class
+  #TEST_CASES
+  #TEST_FILES
+
 
 run:
   steps:
-    - lava-test-case stress-ng-installation --shell ./stress-ng-installation-script.sh
+    - lava-test-case stress-ng-installation --shell ./stress-ng-build-install.sh
     - lava-test-case stress-ng-version --shell stress-ng --version
-    - lava-test-case stress-ng-test-script-run --shell ./stress-ng-test-script.sh ${TEST_CASES} ${TEST_FILES} ${PARAMETERS} ${TIME_TO_RUN} ${CPU_INSTANCES} ${ALL_TESTS}
+    - lava-test-case stress-ng-test-script-run --shell ./stress-ng-test-script.sh ${TEST_CASES} ${TEST_FILES} ${PARAMETERS} ${TIME_TO_RUN} ${CPU_INSTANCES} ${ALL_TESTS} ${CLASS_WISE} ${ALL_CLASS}

@@ -8,17 +8,12 @@ export file_names=""
 export params_list="--perf --tz --metrics-brief -v"
 export time_to_run=30
 export cpu_instance=0
+export all_sequential=0
+export class_wise=0
+export class_names=""
+export all_class=0
+export all_classes_names="cpu cpu-cache device io interrupt filesystem memory network os pipe scheduler vm" 
 
-export   all_tests="crypt \
-					cpu-online \
-					hdd \
-					matrix \
-					seek \
-					sock \
-					pipe \
-					mq \
-					bsearch \
-					lsearch"
 
 
 ####basic stress-ng testing
@@ -33,7 +28,10 @@ echo "About to run stress-ng-test ..."
 usage_func() {
     echo "Usage: ${0} [ -C "testcase1 testcase2 ..." ]
 				    [ -F "filename1 filename2 ..." ]
-				    [ --all 0]
+				    [ --all 0 ]
+				    [ --seq 0 ]
+				    [ --class 0 "class1, class2 ..." ]
+				    [ --all_class 0 ]
 				    [ --params "param1 param2 param3 .." ]
 				    [ --time 30 ]
 				    [ --cpu_instance 0 ]	" 
@@ -69,6 +67,23 @@ stress_ng_test_cases_file(){
 	done
 }
 
+run_test_cases_class_wise(){
+	echo "Running $1 Class Test"
+	if [ "${all_sequential}" -eq 1 ]; then
+			stress-ng --class $1 --all $cpu_instance -t $time_to_run $params_list 2>&1 | tee result.txt
+
+	elif [ "${all_sequential}" -eq 0 ]; then
+			stress-ng --class $1 --sequential $cpu_instance -t $time_to_run $params_list 2>&1 | tee result.txt
+	else
+		echo "wrong sub-argument for --seq [0/1]"
+		usage_func
+	fi
+
+	VAR=$(grep -c " successful " result.txt )
+	lava_test_result_stress_ng "$1-Class-Test" $VAR
+	unset VAR
+	rm result.txt 	 
+}
 
 
 parse_argument(){
@@ -102,8 +117,22 @@ parse_argument(){
 				shift
 				export run_all_tests=$1 
 				shift ;;
+			--seq)
+				shift
+				export all_sequential=$1
+				shift ;;
+			--class)
+				shift
+				export class_wise=$1
+				shift
+				export class_names="$1"
+				shift ;;
+			--all_class)
+				shift
+				export all_class=$1
+				shift ;;
 			*) 
-				echo "Invalid Arguments"
+				echo "Invalid Arguments $1"
 				usage_func
 				;;
 		 esac
@@ -121,13 +150,31 @@ main_function(){
 
 	if [ "${run_all_tests}" -eq 1 ]; then 
 		#echo $all_tests
-		stress_ng_test_cases_terminal $all_tests
+		if [ "${all_sequential}" -eq 1 ]; then
+			stress_ng_test_cases_terminal all
+
+		elif [ "${all_sequential}" -eq 0 ]; then
+			stress_ng_test_cases_terminal seq
+
+		else
+			echo "wrong sub-argument for --seq [0/1]"
+			usage_func
+		fi 
 	else
+		if [ "${all_class}" -eq 1 ] || [ "${class_wise}" -eq 1 ]; then
+			if [ "${all_class}" -eq 1 ]; then
+				export class_names="${all_classes_names}"
+			fi
+			for i_class in $class_names
+			do
+				run_test_cases_class_wise $i_class
+			done
+		fi
 		if [ -n terminal_test ]; then
-			stress_ng_test_cases_terminal $terminal_test
+			echo stress_ng_test_cases_terminal $terminal_test
 		fi
 		if [ -n file_names ]; then
-			stress_ng_test_cases_file
+			echo stress_ng_test_cases_file
 		fi
 	fi
 	

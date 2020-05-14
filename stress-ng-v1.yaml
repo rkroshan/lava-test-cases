@@ -14,7 +14,7 @@ params:
   RUN_SEQUENTIALLY: --seq 0         #when --all 1, then to run test cases sequentially set --seq 1, else to run all test-cases in parallel --seq 0 
   TIME_TO_RUN: --time 30            #type the time in seconds for each test case to run
   CPU_INSTANCES: --cpu_instance 0   #type the number of instances of each test case to run, if set 0 the all the online-spus on target will run each instance of testcase in parallel
-  CLASS_WISE, : --class 0 "cpu cpu-cache"         #if want to run test cases class-wise, then set --class 1 and  type the class-name inside double colon as shown. If --class 0 then no class-wise test will run.
+  CLASS_WISE: --class 0 "cpu cpu-cache"         #if want to run test cases class-wise, then set --class 1 and  type the class-name inside double colon as shown. If --class 0 then no class-wise test will run.
   ALL_CLASS: --all_class 0          #set --all_class 1 if want to run all test-cases class-wise 
 
 

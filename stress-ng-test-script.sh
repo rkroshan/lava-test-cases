@@ -171,10 +171,10 @@ main_function(){
 			done
 		fi
 		if [ -n terminal_test ]; then
-			echo stress_ng_test_cases_terminal $terminal_test
+			stress_ng_test_cases_terminal $terminal_test
 		fi
 		if [ -n file_names ]; then
-			echo stress_ng_test_cases_file
+			stress_ng_test_cases_file
 		fi
 	fi
 	

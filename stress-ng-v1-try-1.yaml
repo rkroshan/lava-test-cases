@@ -8,7 +8,7 @@ metadata:
 params:
 
   PARAMETERS: --params "--perf --tz --metrics-brief -v"         # type the parameters you want
-  TEST_FILES: -F "stressors-trial"         #type the filename present in the same directory consisting the test cases
+  TEST_FILES: -F "stressors.txt"         #type the filename present in the same directory consisting the test cases
   TEST_CASES:                       #type the tes-case name inside the double colon as shown     
   ALL_TESTS: --all 0                #to run all test cases set --all 1 and then all test-cases, test-files, classes given will be neglected and all tests will run.         
   RUN_SEQUENTIALLY: --seq 0         #when --all 1, then to run test cases sequentially set --seq 1, else to run all test-cases in parallel --seq 0 

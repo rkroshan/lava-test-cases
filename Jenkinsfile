@@ -17,7 +17,7 @@ pipeline {
                sh """
           #!/bin/bash
           echo 'submitting job to lava-server'
-          export job_id=`lavacli -i testing jobs submit stress-ng-ssh-basic-job-definition.yaml`
+          export job_id=`lavacli -i testing jobs submit stress_ng_ssh_basic_job_definition.yaml`
           echo "sumitted job id : \$job_id"
           sleep 30
           lavacli -i testing jobs wait --polling 240 \$job_id

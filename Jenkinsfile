@@ -7,6 +7,7 @@ pipeline {
              sh """
              #!/bin/bash
              echo "Connection Success"
+	     ls -la	
              """
             
          }

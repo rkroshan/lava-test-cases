@@ -1,5 +1,5 @@
 pipeline {
-   agent { label 'lava-server' }
+   agent { label 'lava-jenkin' }
 
    stages {
       stage('Init') {

@@ -8,10 +8,10 @@ metadata:
 params:
 
   PARAMETERS: --params "--perf --tz --metrics-brief -v"
-  TEST_FILES: -F "stress-ng-testcases-name.txt stress-ng-testcases-name1.txt"
-  TEST_CASES: -C "matrix lsearch sock pipe"
+  TEST_FILES: #-F "stress-ng-testcases-name.txt stress-ng-testcases-name1.txt"
+  TEST_CASES: -C "matrix lsearch sock pipe cpu-online"
   ALL_TESTS: --all 0
-  TIME_TO_RUN: --time 30
+  TIME_TO_RUN: --time 5
   CPU_INSTANCES: --cpu_instance 0
 
 run:

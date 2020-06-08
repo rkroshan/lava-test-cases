@@ -20,7 +20,7 @@ pipeline {
           export job_id=`lavacli -i testing jobs submit stress_ng_ssh_basic_job_definition.yaml`
           echo "sumitted job id : \$job_id"
           sleep 30
-          lavacli -i testing jobs wait --polling 240 \$job_id
+          lavacli -i testing jobs wait --polling 90 \$job_id
           rm -rf job.properties
           echo "job_id : \$job_id" >> job.properties
           """
